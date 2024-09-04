@@ -22,7 +22,7 @@ public class LinkController {
     public ResponseEntity<LinkResponse> gerarUrlEncurtada(@RequestBody Map<String, String> request){
         String urlOriginal = request.get("urlOriginal");
         Link link = linkService.encurtarUrl(urlOriginal);
-        String gerarUrlRedirecionamentoDoUsuario = "http://192.168.1.9:8080/r/" + link.getUrlEncurtada();
+        String gerarUrlRedirecionamentoDoUsuario = "http://localhost:8080/r/" + link.getUrlEncurtada();
         LinkResponse response = new LinkResponse(link.getId(),link.getUrlLong(),gerarUrlRedirecionamentoDoUsuario,link.getUrlQrCode(),link.getUrlCriadaEm());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
